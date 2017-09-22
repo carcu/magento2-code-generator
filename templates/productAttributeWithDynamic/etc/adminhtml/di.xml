@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\Pool">
+        <arguments>
+            <argument name="modifiers" xsi:type="array">
+                <item name="reservation" xsi:type="array">
+                    <item name="class" xsi:type="string">SalesIgniter\Rental\Ui\DataProvider\Product\Form\Modifier\Composite</item>
+                    <item name="sortOrder" xsi:type="number">125</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\ConfigurableProduct\Ui\DataProvider\Product\Form\Modifier\Composite">
+        <arguments>
+            <argument name="modifiers" xsi:type="array">
+                <item name="reservationAdvancedPricing" xsi:type="string">SalesIgniter\Rental\Ui\DataProvider\Product\Form\Modifier\ReservationAdvancedPricing</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Bundle\Ui\DataProvider\Product\Form\Modifier\Composite">
+        <arguments>
+            <argument name="modifiers" xsi:type="array">
+                <item name="reservationAdvancedPricing" xsi:type="string">SalesIgniter\Rental\Ui\DataProvider\Product\Form\Modifier\ReservationAdvancedPricing</item>
+
+            </argument>
+        </arguments>
+    </type>
+    <type name="SalesIgniter\Rental\Ui\DataProvider\Product\Form\Modifier\Composite">
+        <arguments>
+            <argument name="modifiers" xsi:type="array">
+                <item name="reservationAdvancedPricing" xsi:type="string">SalesIgniter\Rental\Ui\DataProvider\Product\Form\Modifier\ReservationAdvancedPricing</item>
+
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- Fixed Dates dyncamic form -->
+    <virtualType name="SalesIgniter\Warehouses\Ui\DataProvider\Warehouses\Form\Modifier\Pool" type="Magento\Ui\DataProvider\Modifier\Pool">
+        <arguments>
+            <argument name="modifiers" xsi:type="array">
+                <item name="fixed-rental-catalogrules" xsi:type="array">
+                    <item name="class" xsi:type="string">SalesIgniter\Warehouses\Ui\DataProvider\Warehouses\Form\Modifier\FixedRentalCatalogRules</item>
+                    <item name="sortOrder" xsi:type="number">90</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="SalesIgniter\Warehouses\Ui\Component\Listing\DataProviders\SalesIgniter\Warehouses\Form">
+        <arguments>
+            <argument name="pool" xsi:type="object">SalesIgniter\Warehouses\Ui\DataProvider\Warehouses\Form\Modifier\Pool</argument>
+        </arguments>
+    </type>
+
+</config>

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <!-- Warehouses Parent -->
+        <add id="SalesIgniter_Warehouses::warehouses" title="Warehousess" module="SalesIgniter_Warehouses"
+             resource="SalesIgniter_Warehouses::warehouses" sortOrder="21"/>
+
+        <!-- General Sub-Menu -->
+        <add id="SalesIgniter_Warehouses::general" title="General" module="SalesIgniter_Warehouses" parent="SalesIgniter_Warehouses::warehouses"
+             resource="SalesIgniter_Warehouses::warehouses" sortOrder="10"/>
+        <add id="SalesIgniter_Warehouses::warehousessetup" title="Predetermined Dates" module="SalesIgniter_Warehouses" parent="SalesIgniter_Warehouses::general" resource="SalesIgniter_Warehouses::warehouses" action="salesigniter_warehouses/warehouses/index" sortOrder="10"/>
+        <add id="SalesIgniter_Warehouses::settings" title="Settings" module="SalesIgniter_Warehouses" parent="SalesIgniter_Warehouses::general" resource="SalesIgniter_Warehouses::warehouses" action="adminhtml/system_config/edit/section/salesigniter_warehouses/" sortOrder="20"/>
+
+    </menu>
+</config>

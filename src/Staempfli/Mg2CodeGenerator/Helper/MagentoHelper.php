@@ -1,6 +1,6 @@
 <?php
 /**
- * MagentoHelper
+ * MagentoHelper.
  *
  * @copyright Copyright (c) 2016 Staempfli AG
  * @author    juan.alonso@staempfli.com
@@ -37,7 +37,7 @@ class MagentoHelper
      */
     protected function getRegistrationFileAbsolutePath()
     {
-        return $this->applicationFilesHelper->getRootDir() . '/' . self::MODULE_REGISTRATION_FILE;
+        return $this->applicationFilesHelper->getRootDir().'/'.self::MODULE_REGISTRATION_FILE;
     }
 
     /**
@@ -46,8 +46,7 @@ class MagentoHelper
     public function getModuleProperties()
     {
         if (!$this->moduleExist()) {
-            throw new \Exception(sprintf
-                (
+            throw new \Exception(sprintf(
                     '%s not existing at current dir. Please check that your registration.php is correct and try again',
                     self::MODULE_REGISTRATION_FILE
                 )
@@ -58,9 +57,9 @@ class MagentoHelper
         $registrationContent = file_get_contents($this->getRegistrationFileAbsolutePath());
         $moduleProperties['Vendorname'] = preg_match("/[',\"](.*?)_/", $registrationContent, $match) ? $match[1] : false;
         $moduleProperties['Modulename'] = preg_match("/_(.*?)[',\"]/", $registrationContent, $match) ? $match[1] : false;
+
         if (!$moduleProperties['Vendorname'] || !$moduleProperties['Modulename']) {
-            throw new \Exception(sprintf
-                (
+            throw new \Exception(sprintf(
                     'VendorName and ModuleName could not be found on %s. Please check that your module setup is correct and try again',
                     self::MODULE_REGISTRATION_FILE
                 )
